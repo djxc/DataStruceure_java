@@ -1,11 +1,14 @@
 package com.dj.test;
 
 import com.dj.LinearTable.MyArray;
+import com.dj.LinearTable.SqList.LinkList;
+import com.dj.LinearTable.SqList.Node;
 import com.dj.LinearTable.SqList.SqList;
 
 public class Test {
 	public static void main(String[] args) {
-		testSqList();
+//		testSqList();
+		testLinkList();
 		MyArray myarray = new MyArray(10);
 		myarray.display();
 		myarray.insert("dj");
@@ -15,6 +18,21 @@ public class Test {
 		System.out.println(myarray.delete("xc"));
 		myarray.display();
 	}
+	
+	public static void testLinkList(){
+		LinkList linkList = new LinkList();
+		Node first = new Node("first");
+		Node f1 = new Node("seconde");
+		linkList.addNode(first);
+		linkList.addNode(f1);
+		linkList.insertNode(new Node("thired"), 3);
+		linkList.printLinkList();
+		linkList.deleteNode(4);
+		linkList.printLinkList();
+		System.out.println(linkList.getSize());
+		System.out.println(linkList.getDataByIndex(3));
+	}
+	
 	public static void testSqList(){
 		SqList sqlist = new SqList(10);
 		sqlist.setSqList(0, "dj");
