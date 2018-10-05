@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring.ConnectDB;
 
 public class UserDaoImpl implements UserDao{
 	private ConnectUtil connUtil;

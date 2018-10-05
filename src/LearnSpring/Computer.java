@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring;
 
 public class Computer implements USB{
 	private USB usb;

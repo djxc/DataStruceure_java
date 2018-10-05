@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring.ConnectDB;
 
 public class User {
 	private String name;

@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring.ConnectDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

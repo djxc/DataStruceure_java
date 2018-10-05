@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring;
 
 public class TellName {
 	private String name;

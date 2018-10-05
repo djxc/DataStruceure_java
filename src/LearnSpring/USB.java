@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring;
 
 public interface USB {
 	public void read();

@@ -1,4 +1,4 @@
-package firstProgect;
+package LearnSpring;
 import java.sql.*;
 
 public class mysqltest {
