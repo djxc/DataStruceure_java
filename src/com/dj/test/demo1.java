@@ -12,11 +12,46 @@ import org.springframework.core.io.Resource;
 
 import LearnSpring.TellName;
 import LearnSpring.ConnectDB.User;
+import LearnSpring.ConnectDB.UserDao;
 import LearnSpring.ConnectDB.UserDaoImpl;
+import LearnSpring.aop.DynamicProxy;
+import LearnSpring.aop.UserProxy;
 
 public class demo1 {
 	public static void main(String[] args) {
-
+		aop_api();
+	}
+	
+	/**
+	 * aop的api的实现方式
+	 * 通过实现advice接口进行拦截，在bean.xml中设置拦截的类，在拦截类中实现相应的功能。
+	 * 这里将被代理类的每个方法都拦截了
+	 * 被代理的类，以及实现的接口
+	 */
+	public static void aop_api(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		UserDao userd = (UserDao) context.getBean("loggingProxy");
+		userd.delete("dj");
+		userd.register(new User());
+	}
+	
+	/**
+	 * 测试代理模式
+	 */
+	public static void testProxy(){
+		//未使用代理
+		UserDao userdao = new UserDaoImpl();
+		userdao.delete("dj");
+		
+		//使用静态代理，只能代理设定好的类
+		UserDao userProxy = new UserProxy(new UserDaoImpl());
+		userProxy.delete("xc");
+		
+		//使用动态代理，动态代理可以代理任何一个类
+		UserDao dynamicProxy = (UserDao) new DynamicProxy().bind(new UserDaoImpl());
+		dynamicProxy.delete("djxc");
+	
+		
 	}
 	
 	/**
