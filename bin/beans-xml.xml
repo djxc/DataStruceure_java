@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">       
+	<aop:config>
+		<aop:aspect ref="beforeAdvice">
+			<aop:pointcut expression="execution ( * LearnSpring.ConnectDB.UserDao.*(..)) " id="pc"/>
+			<aop:before method="before" pointcut-ref="pc"/> <!-- method对应advice类中的方法名称 -->
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="connUtil" class="LearnSpring.ConnectDB.ConnectUtil">
+		<!--<property name="name" value="dj"/>
+		<property name="password" value="123dj321"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/djdb"/>  -->
+		<property name="name" value="root"/>
+		<property name="password" value=""/>
+		<property name="url" value="jdbc:mysql://localhost:3306/test"/>
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+	</bean>
+	
+	<bean id="UserDao" class="LearnSpring.ConnectDB.UserDaoImpl">
+		<property name="connUtil" ref="connUtil"></property>
+	</bean>
+	
+	<bean id="beforeAdvice" class="LearnSpring.aop.annotation.BeforeAdvice" />
+	<bean id="afterAdvice" class="LearnSpring.aop.annotation.AfterAdvice" />
+</beans>

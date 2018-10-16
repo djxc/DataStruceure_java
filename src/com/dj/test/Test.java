@@ -1,6 +1,8 @@
 package com.dj.test;
 
 
+import java.util.Arrays;
+
 import com.dj.LinearTable.MyArray;
 import com.dj.LinearTable.SqList.LinkList;
 import com.dj.LinearTable.SqList.Node;
@@ -9,6 +11,8 @@ import com.dj.Stack.LinkStack;
 import com.dj.Stack.Stack;
 import com.dj.Tree.BiNode;
 import com.dj.Tree.BiTree;
+import com.dj.search.MySearch;
+import com.dj.sort.MySort;
 
 public class Test {
 	public static void main(String[] args) {
@@ -16,8 +20,28 @@ public class Test {
 //		testLinkList();
 //		testStack();
 //		testLinkStack();
-		testTree();
+//		testTree();
+//		testSort();
+		testSearch();
+	}
+	
+	public static void testSearch() {
+		int[] array = {1, 2, 3, 4, 5, 6, 7, 9, 15, 20};
+		MySearch search = new MySearch();
+//		System.out.println(search.SeqSearch(array, 7));
+		System.out.println(search.BinSearch(array, 8));
+	}
+	
+	public static void testSort() {
+		int[] array = {9, 4, 1, 5, 6, 3, 2, 7, 8, 6};
+		MySort insertSort = new MySort();
 		
+		System.out.println(Arrays.toString(array));
+//		insertSort.DirInsertsort(array);
+//		insertSort.BubbleSort(array);
+//		insertSort.FastSort(array, 0, array.length-1);
+		insertSort.SelectSort(array);
+		System.out.println(Arrays.toString(array));		
 	}
 	
 	public static void testTree(){
